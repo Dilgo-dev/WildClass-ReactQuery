@@ -1,6 +1,6 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import fetchPokemon from "./services/fetchPokemons";
-import { useState } from "react";
 
 export default function App() {
     const [id, setId] = useState(1);
