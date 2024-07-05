@@ -1,18 +1,11 @@
-import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import fetchPokemon from "./services/fetchPokemons";
 
 export default function App() {
-    const [id, setId] = useState(1);
-    const { data, isLoading, isError, refetch } = useQuery({
-        queryKey: ["pokemon", id],
-        queryFn: () => fetchPokemon(id),
+    const { data, isLoading, isError } = useQuery({
+        queryKey: ["pokemon"],
+        queryFn: fetchPokemon,
     });
-
-    const handleChangeId = (event) => {
-        setId(event.target.value);
-        refetch();
-    };
 
     return (
         <>
@@ -21,10 +14,7 @@ export default function App() {
             ) : null}
             {isLoading ? <p>🐲 Chargement du pokemon ! ...</p> : null}
             {data ? (
-                <>
-                    <img src={data.sprites.front_default} alt={data.name} />
-                    <input type="number" onChange={handleChangeId} value={id} />
-                </>
+                <img src={data.sprites.front_default} alt={data.name} />
             ) : null}
         </>
     );

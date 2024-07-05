@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const fetchRandomPokemon = (id) => {
+const fetchPokemon = (id) => {
     return axios
         .get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
         .then((response) => response.data);
 };
 
-export default fetchRandomPokemon;
+export default fetchPokemon;
